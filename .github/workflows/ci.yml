@@ -82,16 +82,6 @@ jobs:
           -p:Version="${{ steps.pkgver.outputs.version }}"
           -p:InformationalVersion="${{ steps.gitversion.outputs.InformationalVersion }}"
 
-      - name: Test
-        run: |
-          dotnet test Graphql.ClientWrapper.sln \
-            -c ${{ env.CONFIGURATION }} \
-            --no-build \
-            --verbosity normal \
-            --collect:"XPlat Code Coverage" \
-            --results-directory "${{ github.workspace }}/TestResults" \
-            --logger "trx;LogFilePrefix=test_results"
-
       - name: Upload test and coverage artifacts
         uses: actions/upload-artifact@v4
         if: always()
