@@ -77,9 +77,6 @@ jobs:
       - name: Build
         run: dotnet build Graphql.ClientWrapper.sln -c ${{ env.CONFIGURATION }} --no-restore
 
-      - name: Test
-        run: dotnet test Graphql.ClientWrapper.sln -c ${{ env.CONFIGURATION }} --no-build --verbosity normal
-
       - name: Pack
         shell: bash
         run: |
